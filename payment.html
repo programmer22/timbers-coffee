@@ -1,8 +1,3 @@
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,34 +7,31 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.2/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body class="flex flex-col min-h-screen bg-gray-100 text-sm">
-
     <!-- Header -->
-    <div class="bg-white shadow-md fixed top-0 left-0 right-0 z-10 p-4 md:p-8 flex justify-between items-center">
+    <header class="bg-white shadow-md fixed top-0 left-0 right-0 z-10 p-4 md:p-8 flex justify-between items-center">
         <div class="flex items-center">
             <img src="timber.png" alt="Timber" class="h-10 w-10 md:h-16 md:w-16">
             <a href="#" class="text-2xl md:text-3xl lg:text-4xl font-bold ml-3 text-black">Timbers Coffee</a>
         </div>
-        <ul class="hidden md:flex gap-4 md:gap-8 text-black font-semibold">
-            <li><a href="index.html" class="hover:text-blue-300">Home</a></li>
-            <li><a href="#" class="hover:text-blue-300">Menu</a></li>
-            <li><a href="#" class="hover:text-blue-300">About</a></li>
-            <li><a href="#" class="hover:text-blue-300">Shop</a></li>
-            <li><a href="#" class="hover:text-blue-300">Contact</a></li>
-        </ul>
+        <div>
+            <ul class="hidden md:flex gap-4 md:gap-8 text-black font-semibold">
+                <li><a href="index.html" class="hover:text-blue-300">Home</a></li>
+                <li><a href="#" class="hover:text-blue-300">Menu</a></li>
+                <li><a href="#" class="hover:text-blue-300">About</a></li>
+                <li><a href="#" class="hover:text-blue-300">Shop</a></li>
+                <li><a href="#" class="hover:text-blue-300">Contact</a></li>
+            </ul>
+        </div>
         <div class="flex items-center">
             <button class="md:hidden text-3xl text-black">&#9776;</button>
             <a href="checkout.html" class="ml-4 flex items-center">
                 <img src="cart.png" alt="Cart" class="h-6 w-6 md:h-8 md:w-8">
             </a>
         </div>
-    </div>
+    </header>
 
     <!-- Main Content -->
-    <main class="flex flex-col mt-32 mx-auto w-full px-4 md:px-8">
-        <div class="flex items-center justify-end pt-8">
-            <a href="checkout.html" class="mt-2 bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition duration-150 ease-in-out text-center p-4">Return to Cart</a>
-        </div>
-    
+    <main class="flex flex-col mt-4 mx-auto w-full px-4 md:px-8 pb-8">
         <div class="flex flex-col md:flex-row gap-8 mt-4">
             <div class="w-full md:w-1/2">
                 <h2 class="text-2xl font-semibold mb-4">Billing Information</h2>
@@ -95,25 +87,36 @@
         </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="mt-auto bg-gray-100 p-4">
-        <div class="container mx-auto flex justify-between items-center flex-wrap">
-            <div>
-                <h4 class="font-semibold mb-2">Contact Info</h4>
-                <p>Address: 1234 St.</p>
-                <p>Phone: 123-456-7890</p>
-                <p>Email: contact@coffeeshop.com</p>
+    <footer class="fixed bottom-0 w-full bg-gray-800 text-white py-8">
+        <div class="container mx-auto flex flex-wrap justify-center items-center text-center md:justify-between md:text-left">
+            <div class="w-full md:w-1/3 px-4 mb-6 md:mb-0">
+                <h3 class="text-2xl font-bold">Timbers Coffee</h3>
+                <ul class="mt-4">
+                    <li><a href="#" class="hover:text-blue-300">Home</a></li>
+                    <li><a href="#" class="hover:text-blue-300">Menu</a></li>
+                    <li><a href="#" class="hover:text-blue-300">About</a></li>
+                    <li><a href="#" class="hover:text-blue-300">Contact</a></li>
+                </ul>
             </div>
-            <div>
-                <h4 class="font-semibold mb-2">Newsletter</h4>
-                <form class="flex gap-2">
-                    <input type="email" placeholder="Enter your email" class="border p-2 rounded">
-                    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Subscribe</button>
+
+            <div class="w-full md:w-1/3 px-4 mb-6 md:mb-0">
+                <h3 class="text-2xl font-bold">Follow Us</h3>
+                <div class="flex justify-center md:justify-start mt-4">
+                    <a href="#" class="hover:text-blue-300 mr-2"><img src="facebook.png" alt="Facebook" class="w-6 h-6" /></a>
+                    <a href="#" class="hover:text-blue-300 mr-2"><img src="instagram.png" alt="Instagram" class="w-6 h-6" /></a>
+                    <a href="#" class="hover:text-blue-300"><img src="twitter.png" alt="Twitter" class="w-6 h-6" /></a>
+                </div>
+                <p class="mt-4">© 2024 Timbers Coffee. All rights reserved.</p>
+            </div>
+
+            <div class="w-full md:w-1/3 px-4 text-center md:text-left lg:text-left">
+                <h3 class="text-2xl font-bold">Newsletter</h3>
+                <p class="mt-4">Subscribe to our newsletter for the latest updates.</p>
+                <form class="mt-4 flex flex-col md:flex-row">
+                    <input type="email" placeholder="Enter your email" class="p-2 mb-4 md:mb-0 md:mr-2 rounded focus:outline-none focus:shadow-outline" required>
+                    <button type="submit" class="p-2 bg-blue-500 hover:bg-blue-700 rounded text-white">Subscribe</button>
                 </form>
             </div>
-        </div>
-        <div class="text-center py-4">
-            <p>&copy; 2023 Timbers Coffee. All rights reserved.</p>
         </div>
     </footer>
 

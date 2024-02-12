@@ -14,27 +14,45 @@
 </head>
 <body class="text-sm">
     <!-- Original header content -->
-    <div class="p-4 md:p-8 flex justify-between items-center absolute top-0 left-0 right-0 z-20">
+    <section class="p-4 md:p-8 flex justify-between items-center absolute top-0 left-0 right-0 z-20">
         <div class="flex items-center">
-            <img src="timber.png" alt="Timber" class="h-10 w-10 md:h-16 md:w-16">
-            <a href="#" class="website-title text-black text-2xl md:text-3xl lg:text-4xl font-bold ml-3">Timbers Coffee</a>
+            <a href="index.html" class="website-title text-black text-2xl md:text-3xl lg:text-4xl font-bold ml-3">Timbers Coffee</a>
         </div>
 
         <ul class="hidden md:flex gap-4 md:gap-8 items-center list-none text-black font-semibold items-center text-black">
-            <li><a href="#" class="hover:text-blue-300">Home</a></li>
+            <li><a href="index.html" class="hover:text-blue-300">Home</a></li>
             <li><a href="#" class="hover:text-blue-300">Menu</a></li>
             <li><a href="#" class="hover:text-blue-300">About</a></li>
             <li><a href="#" class="hover:text-blue-300">Shop</a></li>
             <li><a href="#" class="hover:text-blue-300">Contact</a></li>
         </ul>
 
+        <!-- Sidebar Menu (Initially hidden) -->
+        <div id="sidebarMenu" class="fixed z-40 left-[-300px] top-0 w-64 bg-gray-100 h-full shadow-md transition duration-300 ease-in-out">
+            <div class="p-5">
+                <button id="closeBtn" class="text-gray-800 text-3xl">
+                    &times;
+                </button>
+                <h1 class="text-2xl font-bold text-gray-800 mt-4">Timbers Coffee</h1>
+                <hr>
+                <nav class="mt-5">
+                    <ul>
+                        <li><a href="#" class="block text-gray-700 py-2">Home</a></li>
+                        <li><a href="#" class="block text-gray-700 py-2">Menu</a></li>
+                        <li><a href="#" class="block text-gray-700 py-2">About</a></li>
+                        <li><a href="#" class="block text-gray-700 py-2">Shop</a></li>
+                        <li><a href="#" class="block text-gray-700 py-2">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
         <div class="cart flex">
             <div class="menu-toggle md:hidden">
-                <button class="hamburger-menu text-white text-3xl">&#9776;</button>
+                <button class="hamburger-menu text-black text-3xl">&#9776;</button>
             </div>
-            <a href="checkout.html" class="cart-link flex items-center ml-4 mt-2 lg:mt-0"><img src="cart.png" alt="Cart" class="h-6 w-6 md:h-8 md:w-8"></a>
         </div>
-    </div>
+    </section>
 
     <main class="p-20">
         <h1 class="text-3xl font-bold text-center my-4">Checkout</h1>
@@ -111,6 +129,14 @@
     <script src="js/checkout.js"></script>
 
     <script>
+        document.querySelector('.hamburger-menu').addEventListener('click', function() {
+            document.getElementById('sidebarMenu').style.left = '0';
+        });
+
+        document.getElementById('closeBtn').addEventListener('click', function() {
+            document.getElementById('sidebarMenu').style.left = '-300px';
+        });
+
         // Example function to capture and store total amount
         function storeTotalAmount() {
             const totalAmount = document.getElementById('total-price').textContent;
