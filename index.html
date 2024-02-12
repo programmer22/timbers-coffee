@@ -7,10 +7,25 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        
+        #toast-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 9999;
+        }
+        .toast {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            margin: 5px;
+            border-radius: 5px;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
     </style>
 </head>
-<body class="font-roboto bg-gray-100">
+<body class="font-roboto bg-gray-100 text-sm">
     <header class="bg-cover bg-center relative" style="background-image:url('background.jpg'); height: 50vh;">
         <div class="absolute top-0 left-0 right-0 bottom-0 bg-black bg-opacity-50"></div> <!-- Overlay to enhance text visibility -->
 
@@ -41,7 +56,7 @@
                 <div class="text-white px-4 py-2 md:px-8 md:flex-1">
                     <h1 class="text-3xl md:text-4xl mb-4">Welcome to Timbers Coffee</h1>
                     <p class="mb-4">Discover our handcrafted coffee selections and experience the best of flavors.</p>
-                    <div class="flex j3stify-center md:justify-start space-x-4">
+                    <div class="flex justify-center md:justify-start space-x-4">
                         <a href="#" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Learn More</a>
                         <a href="#" class="bg-transparent hover:bg-blue-500 text-blue-500 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">Our Menu</a>
                     </div>
@@ -61,7 +76,7 @@
                 <a href="#" class="website-title text-white text-2xl md:text-3xl lg:text-4xl font-bold ml-3">Timbers Coffee</a>
             </div>
 
-            <ul class="hidden md:flex gap-4 md:gap-8 items-center list-none text-white font-semibold">
+            <ul class="hidden md:flex gap-4 md:gap-8 items-center list-none text-white font-semibold items-center">
                 <li><a href="#" class="hover:text-blue-300">Home</a></li>
                 <li><a href="#" class="hover:text-blue-300">Menu</a></li>
                 <li><a href="#" class="hover:text-blue-300">About</a></li>
@@ -69,11 +84,11 @@
                 <li><a href="#" class="hover:text-blue-300">Contact</a></li>
             </ul>
 
-            <div class="cart flex items-center">
+            <div class="cart flex">
                 <div class="menu-toggle md:hidden">
                     <button class="hamburger-menu text-white text-3xl">&#9776;</button>
                 </div>
-                <a href="#" class="cart-link flex items-center ml-4 mt-2 sm:mt-2 md-mt-0 lg:mt-0"><img src="cart.png" alt="Cart" class="h-6 w-6 md:h-8 md:w-8"></a>
+                <a href="checkout.html" class="cart-link flex items-center ml-4 mt-2 lg:mt-0"><img src="cart.png" alt="Cart" class="h-6 w-6 md:h-8 md:w-8"></a>
             </div>
         </div>
     </header>
@@ -96,86 +111,96 @@
             <p class="mt-4 text-center md:text-left">We pride ourselves on creating a welcoming atmosphere for all coffee lovers.</p>
           </div>
         </div>
-      </section>
+    </section>
 
-    <main class="container mx-auto py-8">
-        <section class="text-center">
-            <h2 class="text-3xl font-bold mb-4">Our Menu</h2>
-            <p class="text-gray-600">Discover our handcrafted coffee selections and experience the best of flavors.</p>
-        </section>
+    <div class="bg-cover bg-center bg-no-repeat relative" style="background-image:url('ad.jpg'); height: 60vh;">
+        <div class="absolute top-0 left-0 right-0 bottom-0 bg-black bg-opacity-50"></div> <!-- Overlay to enhance text visibility -->
+        <div class="container mx-auto flex justify-center items-center h-full relative z-10">
+            <h2 class="text-3xl text-white text-center">Enjoy the best coffee in town</h2>
+        </div>
+    </div>
 
-        <section class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-8 mt-8">
-            <div class="bg-white rounded-lg shadow-lg flex flex-col justify-between p-4 h-full">
-                <div>
-                    <div class="text-center bg-cover bg-center" style="padding-top: 100%; background-image: url('https://source.unsplash.com/random/600x800?coffee');"></div>
-                    <h3 class="text-xl font-bold mt-4">Caramel Macchiato</h3>
-                    <p class="text-gray-600 mt-2">Espresso combined with vanilla-flavored syrup, milk, and caramel sauce over ice.</p>
+    <main class="py-8 bg-gray-200">
+        <div class="container mx-auto">
+            <section class="text-center">
+                <h2 class="text-3xl font-bold mb-4">Our Menu</h2>
+                <p class="text-gray-600">Discover our handcrafted coffee selections and experience the best of flavors.</p>
+            </section>
+    
+            <section class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-8 mt-8">
+                <div class="bg-white rounded-lg shadow-lg flex flex-col justify-between p-4 h-full">
+                    <div>
+                        <div class="text-center bg-cover bg-center" style="padding-top: 100%; background-image: url('https://source.unsplash.com/random/600x800?coffee');"></div>
+                        <h3 class="text-xl font-bold mt-4">Caramel Macchiato</h3>
+                        <p class="text-gray-600 mt-2">Espresso combined with vanilla-flavored syrup, milk, and caramel sauce over ice.</p>
+                    </div>
+                    <div class="mt-4 flex justify-between items-center">
+                        <span class="text-xl font-bold text-gray-700">$4.99</span>
+                        <button id="coffee" data-name="Caramel Macchiato" data-price="4.99" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Order Now</button>
+                    </div>
+                    
                 </div>
-                <div class="mt-4 flex justify-between items-center">
-                    <span class="text-xl font-bold text-gray-700">$4.99</span>
-                    <a href="#" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Order Now</a>
+                <div class="bg-white rounded-lg shadow-lg flex flex-col justify-between p-4 h-full">
+                    <div>
+                        <div class="text-center bg-cover bg-center" style="padding-top: 100%; background-image: url('https://source.unsplash.com/random/600x800?cappuccino');"></div>
+                        <h3 class="text-xl font-bold mt-4">Cappuccino</h3>
+                        <p class="text-gray-600 mt-2">Espresso combined with frothed milk and steamed milk foam.</p>
+                    </div>
+                    <div class="mt-4 flex justify-between items-center">
+                        <span class="text-xl font-bold text-gray-700">$3.99</span>
+                        <a href="#" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Order Now</a>
+                    </div>
                 </div>
-            </div>
-            <div class="bg-white rounded-lg shadow-lg flex flex-col justify-between p-4 h-full">
-                <div>
-                    <div class="text-center bg-cover bg-center" style="padding-top: 100%; background-image: url('https://source.unsplash.com/random/600x800?cappuccino');"></div>
-                    <h3 class="text-xl font-bold mt-4">Cappuccino</h3>
-                    <p class="text-gray-600 mt-2">Espresso combined with frothed milk and steamed milk foam.</p>
+                
+                <div class="bg-white rounded-lg shadow-lg flex flex-col justify-between p-4 h-full">
+                    <div>
+                        <div class="text-center bg-cover bg-center" style="padding-top: 100%; background-image: url('https://source.unsplash.com/random/600x800?espresso');"></div>
+                        <h3 class="text-xl font-bold mt-4">Espresso</h3>
+                        <p class="text-gray-600 mt-2">A strong black coffee made by forcing steam through ground coffee beans.</p>
+                    </div>
+                    <div class="mt-4 flex justify-between items-center">
+                        <span class="text-xl font-bold text-gray-700">$2.99</span>
+                        <a href="#" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Order Now</a>
+                    </div>
                 </div>
-                <div class="mt-4 flex justify-between items-center">
-                    <span class="text-xl font-bold text-gray-700">$3.99</span>
-                    <a href="#" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Order Now</a>
+                
+                <div class="bg-white rounded-lg shadow-lg flex flex-col justify-between p-4 h-full">
+                    <div>
+                        <div class="text-center bg-cover bg-center" style="padding-top: 100%; background-image: url('https://source.unsplash.com/random/600x800?mocha');"></div>
+                        <h3 class="text-xl font-bold mt-4">Mocha</h3>
+                        <p class="text-gray-600 mt-2">Espresso combined with chocolate-flavored syrup, milk, and steamed milk foam.</p>
+                    </div>
+                    <div class="mt-4 flex justify-between items-center">
+                        <span class="text-xl font-bold text-gray-700">$4.99</span>
+                        <a href="#" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Order Now</a>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="bg-white rounded-lg shadow-lg flex flex-col justify-between p-4 h-full">
-                <div>
-                    <div class="text-center bg-cover bg-center" style="padding-top: 100%; background-image: url('https://source.unsplash.com/random/600x800?espresso');"></div>
-                    <h3 class="text-xl font-bold mt-4">Espresso</h3>
-                    <p class="text-gray-600 mt-2">A strong black coffee made by forcing steam through ground coffee beans.</p>
+                
+                <div class="bg-white rounded-lg shadow-lg flex flex-col justify-between p-4 h-full">
+                    <div>
+                        <div class="text-center bg-cover bg-center" style="padding-top: 100%; background-image: url('https://source.unsplash.com/random/600x800?latte');"></div>
+                        <h3 class="text-xl font-bold mt-4">Latte</h3>
+                        <p class="text-gray-600 mt-2">Espresso combined with steamed milk and a small amount of milk foam.</p>
+                    </div>
+                    <div class="mt-4 flex justify-between items-center">
+                        <span class="text-xl font-bold text-gray-700">$3.99</span>
+                        <a href="#" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Order Now</a>
+                    </div>
                 </div>
-                <div class="mt-4 flex justify-between items-center">
-                    <span class="text-xl font-bold text-gray-700">$2.99</span>
-                    <a href="#" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Order Now</a>
+                
+                <div class="bg-white rounded-lg shadow-lg flex flex-col justify-between p-4 h-full">
+                    <div>
+                        <div class="text-center bg-cover bg-center" style="padding-top: 100%; background-image: url('https://source.unsplash.com/random/600x800?americano');"></div>
+                        <h3 class="text-xl font-bold mt-4">Americano</h3>
+                        <p class="text-gray-600 mt-2">Espresso combined with hot water, giving it a similar strength to, but different flavor from, drip coffee.</p>
+                    </div>
+                    <div class="mt-4 flex justify-between items-center">
+                        <span class="text-xl font-bold text-gray-700">$2.99</span>
+                        <a href="#" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Order Now</a>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="bg-white rounded-lg shadow-lg flex flex-col justify-between p-4 h-full">
-                <div>
-                    <div class="text-center bg-cover bg-center" style="padding-top: 100%; background-image: url('https://source.unsplash.com/random/600x800?mocha');"></div>
-                    <h3 class="text-xl font-bold mt-4">Mocha</h3>
-                    <p class="text-gray-600 mt-2">Espresso combined with chocolate-flavored syrup, milk, and steamed milk foam.</p>
-                </div>
-                <div class="mt-4 flex justify-between items-center">
-                    <span class="text-xl font-bold text-gray-700">$4.99</span>
-                    <a href="#" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Order Now</a>
-                </div>
-            </div>
-            
-            <div class="bg-white rounded-lg shadow-lg flex flex-col justify-between p-4 h-full">
-                <div>
-                    <div class="text-center bg-cover bg-center" style="padding-top: 100%; background-image: url('https://source.unsplash.com/random/600x800?latte');"></div>
-                    <h3 class="text-xl font-bold mt-4">Latte</h3>
-                    <p class="text-gray-600 mt-2">Espresso combined with steamed milk and a small amount of milk foam.</p>
-                </div>
-                <div class="mt-4 flex justify-between items-center">
-                    <span class="text-xl font-bold text-gray-700">$3.99</span>
-                    <a href="#" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Order Now</a>
-                </div>
-            </div>
-            
-            <div class="bg-white rounded-lg shadow-lg flex flex-col justify-between p-4 h-full">
-                <div>
-                    <div class="text-center bg-cover bg-center" style="padding-top: 100%; background-image: url('https://source.unsplash.com/random/600x800?americano');"></div>
-                    <h3 class="text-xl font-bold mt-4">Americano</h3>
-                    <p class="text-gray-600 mt-2">Espresso combined with hot water, giving it a similar strength to, but different flavor from, drip coffee.</p>
-                </div>
-                <div class="mt-4 flex justify-between items-center">
-                    <span class="text-xl font-bold text-gray-700">$2.99</span>
-                    <a href="#" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Order Now</a>
-                </div>
-            </div>
-        </section>
+            </section>
+        </div> 
     </main>
 
     <section id="features" class="container mx-auto px-4 space-y-6 bg-slate-50 py-8 dark:bg-transparent md:py-12 lg:py-20">
@@ -239,37 +264,39 @@
       
 
     <!-- Create the shop section -->
-    <section class="container mx-auto py-8 px-4">
-        <div class="text-center">
-            <h2 class="text-3xl font-bold mb-4">Shop</h2>
-            <p class="text-gray-600">Purchase our coffee beans and merchandise to enjoy the Timbers Coffee experience at home.</p>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
-            <div class="bg-white rounded-lg shadow-lg p-4">
-                <div class="text-center bg-cover bg-center" style="padding-top: 100%; background-image: url('https://source.unsplash.com/random/600x800?shirt');"></div>
-                <h3 class="text-xl font-bold mt-4">Coffee Beans</h3>
-                <p class="text-gray-600 mt-2">High-quality coffee beans from around the world, roasted to perfection.</p>
-                <div class="mt-4 flex justify-between items-center">
-                    <span class="text-xl font-bold text-gray-700">$14.99</span>
-                    <a href="#" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Order Now</a>
-                </div>
+    <section class="py-8 px-4 bg-gray-200">
+        <div class="container mx-auto">
+            <div class="text-center">
+                <h2 class="text-3xl font-bold mb-4">Shop</h2>
+                <p class="text-gray-600">Purchase our coffee beans and merchandise to enjoy the Timbers Coffee experience at home.</p>
             </div>
-            <div class="bg-white rounded-lg shadow-lg p-4">
-                <div class="text-center bg-cover bg-center" style="padding-top: 100%; background-image: url('https://source.unsplash.com/random/600x800?coffemug');"></div>
-                <h3 class="text-xl font-bold mt-4">Merchandise</h3>
-                <p class="text-gray-600 mt-2">Show your love for Timbers Coffee with our branded merchandise.</p>
-                <div class="mt-4 flex justify-between items-center">
-                    <span class="text-xl font-bold text-gray-700">$24.99</span>
-                    <a href="#" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Order Now</a>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
+                <div class="bg-white rounded-lg shadow-lg p-4">
+                    <div class="text-center bg-cover bg-center" style="padding-top: 100%; background-image: url('https://source.unsplash.com/random/600x800?shirt');"></div>
+                    <h3 class="text-xl font-bold mt-4">Coffee Beans</h3>
+                    <p class="text-gray-600 mt-2">High-quality coffee beans from around the world, roasted to perfection.</p>
+                    <div class="mt-4 flex justify-between items-center">
+                        <span class="text-xl font-bold text-gray-700">$14.99</span>
+                        <a href="#" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Order Now</a>
+                    </div>
                 </div>
-            </div>
-            <div class="bg-white rounded-lg shadow-lg p-4">
-                <div class="text-center bg-cover bg-center" style="padding-top: 100%; background-image:url('https://source.unsplash.com/random/600x800?coffeebeans');"></div>
-                <h3 class="text-xl font-bold mt-4">Brewing Equipment</h3>
-                <p class="text-gray-600 mt-2">Get the best brewing equipment to make the perfect cup of coffee at home.</p>
-                <div class="mt-4 flex justify-between items-center">
-                    <span class="text-xl font-bold text-gray-700">$49.99</span>
-                    <a href="#" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Order Now</a>
+                <div class="bg-white rounded-lg shadow-lg p-4">
+                    <div class="text-center bg-cover bg-center" style="padding-top: 100%; background-image: url('https://source.unsplash.com/random/600x800?coffemug');"></div>
+                    <h3 class="text-xl font-bold mt-4">Merchandise</h3>
+                    <p class="text-gray-600 mt-2">Show your love for Timbers Coffee with our branded merchandise.</p>
+                    <div class="mt-4 flex justify-between items-center">
+                        <span class="text-xl font-bold text-gray-700">$24.99</span>
+                        <a href="#" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Order Now</a>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg p-4">
+                    <div class="text-center bg-cover bg-center" style="padding-top: 100%; background-image:url('https://source.unsplash.com/random/600x800?coffeebeans');"></div>
+                    <h3 class="text-xl font-bold mt-4">Brewing Equipment</h3>
+                    <p class="text-gray-600 mt-2">Get the best brewing equipment to make the perfect cup of coffee at home.</p>
+                    <div class="mt-4 flex justify-between items-center">
+                        <span class="text-xl font-bold text-gray-700">$49.99</span>
+                        <a href="#" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Order Now</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -324,7 +351,8 @@
         </div>
     </footer>
 
-    
+    <div id="toast-container"></div>
+
 
 
     <script>
@@ -335,7 +363,29 @@
         document.getElementById('closeBtn').addEventListener('click', function() {
             document.getElementById('sidebarMenu').style.left = '-300px';
         });
+
+        function showToast(message, duration = 3000) {
+            const toastContainer = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.classList.add('toast');
+            toast.textContent = message;
+            toastContainer.appendChild(toast);
+
+            setTimeout(() => {
+                toast.style.opacity = 1;
+            }, 100);
+            
+            setTimeout(() => {
+                toast.style.opacity = 0;
+                setTimeout(() => toast.remove(), 500); // Ensure the fade-out animation plays
+            }, duration);
+        }
+
     </script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.0.5/redux.min.js"></script>
+<script src="js/index.js"></script>
+
 </body>
 </html>
 
