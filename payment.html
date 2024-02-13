@@ -107,7 +107,11 @@
                     <div id="display-total" class="text-xl font-bold">
                         <!-- Total will be displayed here -->
                     </div>
-
+                    <!-- Get the total price from local storage and display it  -->
+                    <script>
+                        const totalAmount = localStorage.getItem('totalAmount');
+                        document.getElementById('display-total').textContent = `Total: $${totalAmount}`;
+                    </script>
                     <button type="submit" class="mt-2 bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition duration-150 ease-in-out">Submit</button>
                 </form>
             </div>
